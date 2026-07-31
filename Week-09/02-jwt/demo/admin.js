@@ -65,7 +65,9 @@ app.post("/login", (req,res)=>{
     email:user.email,
     password:user.password,
     role:user.role
-   }, JWT_SECERT)
+   }, JWT_SECERT,{
+    expiresIn:"1m"
+   })
 
 
    res.json(token)
