@@ -83,7 +83,7 @@ Build a collaborative expiry tracking application for shared households. Roommat
 // Item
 {
   _id: ObjectId,
-  householdId: ObjectId,  // required
+  householdId: ObjectId,  // requiredheld
   addedBy: ObjectId,      // user reference
   name: String,           // required
   category: String,       // enum: produce, dairy, meat, pantry, frozen, other
