@@ -32,3 +32,6 @@ export interface Item{
   createdAt: Date;
   updatedAt:Date
 }
+export interface JwtPayload {
+  userId: string;
+}
