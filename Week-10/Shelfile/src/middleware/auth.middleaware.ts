@@ -38,7 +38,7 @@ const authMiddleware =(
             process.env.JWT_SECERT!
         ) as JwtPayload
 
-        console.log(decode.userId)
+   req.user = decode
 
         next()
         
