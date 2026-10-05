@@ -1,13 +1,12 @@
- import mongoose, { Schema } from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
 
- const HouseholdSchema = new Schema({
-
+const HouseholdSchema = new Schema({
 
     name:{
         type:String,
         required:true,
-
+        trim:true
     },
     inviteCode:{
         type:String,
@@ -30,7 +29,7 @@
 
     },
     wasteScore:{
-        type:String,
+        type:Number,
         default:0,
         min:0,
         max:100,
@@ -40,7 +39,6 @@
  });
 
 
+const Household = mongoose.model("Household", HouseholdSchema)
 
- const Household = mongoose.model("Household", HouseholdSchema)
-
- export default Household
+export default Household

@@ -1,17 +1,14 @@
-import { Request, Response, NextFunction } from "express";
-import jwt from "jsonwebtoken";
+    import type { Request, Response, NextFunction } from "express";
+    import jwt from "jsonwebtoken";
 import type { JwtPayload } from "../types/type";
 
-const authMiddleware =( 
+const authMiddleware = (
     req:Request,
     res:Response,
     next:NextFunction
-)=>{
-
-
+) =>{
 
     try {
-
 
         const authHeader = req.headers.authorization;
 
@@ -22,32 +19,28 @@ const authMiddleware =(
               });
         }
 
+        const [scheme, token] = authHeader.split(" ")
 
-        const token = authHeader.split("")[1]
-
-        if(!token){
+        if(scheme !== "Bearer" || !token){
 
             return res.status(401).json({
                 message: "Invalid authorization header",
               });
         }
 
-
         const decode = jwt.verify(
             token,
-            process.env.JWT_SECERT!
+            process.env.JWT_SECRET!
         ) as JwtPayload
 
-   req.user = decode
+        req.user = decode
 
         next()
-        
+
     } catch (error) {
         return res.status(401).json({
             message: "Invalid or expired token",
           });
-
-        
     }
 }
 

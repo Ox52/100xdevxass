@@ -1,37 +1,48 @@
+export type ItemCategory =
+  | "produce"
+  | "dairy"
+  | "meat"
+  | "pantry"
+  | "frozen"
+  | "other";
+
+export type ItemStatus =
+  | "fresh"
+  | "expiring-soon"
+  | "expired"
+  | "used"
+  | "wasted";
+
 export interface User{
-
-
   name: string;
   email: string;
-  password: string;
-  householdId: string;
+  householdId: string | null;
   createdAt: Date;
 
 }
 
 export interface Household {
   name: string;
-  inviteaCode: string;
-  memebers: string[];
-  wasteScore: string;
+  inviteCode: string;
+  members: string[];
+  wasteScore: number;
   admin: string;
   createdAt: Date;
 
 }
 
 export interface Item{
-
-
   householdId: string;
   addedBy: string;
   name: string;
-  category: |"produce" | "dairy" | "meat" | "pantry" | "frozen" | "other";
+  category: ItemCategory;
   quantity: number;
   expiryDate: Date;
-  status: | "fresh" | "expiring-soon" | "expired" | "used" | "wasted";
+  status: ItemStatus;
   createdAt: Date;
   updatedAt:Date
 }
+
 export interface JwtPayload {
   userId: string;
 }

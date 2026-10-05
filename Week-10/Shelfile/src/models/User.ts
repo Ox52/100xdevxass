@@ -12,11 +12,12 @@ const UserSchema = new Schema({
         maxlength:30,
         trim:true
     },
-    emaiL:{
+    email:{
         type:String,
         required:true,
         unique:true,
-        lowercase:true
+        lowercase:true,
+        trim:true
     },
     password:{
 
